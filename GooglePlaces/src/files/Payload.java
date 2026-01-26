@@ -1,6 +1,6 @@
 package files;
 
-import source.Notes;
+//import source.Notes;
 
 
 
@@ -15,9 +15,9 @@ public class Payload {
 				+ "    \"website\": \"http://google.com\",\r\n" + "    \"language\": \"French-IN\"\r\n" + "}";
 	}
 	
-	public static String UpdatePlace() {
+	public static String UpdatePlace(String placeID) {
 		return "{\r\n"
-				+ "\"place_id\":\""+Notes.placeID+"\",\r\n"
+				+ "\"place_id\":\""+placeID+"\",\r\n"
 				+ "\"address\":\"70 winter walk, USA\",\r\n"
 				+ "\"key\":\"qaclick123\"\r\n"
 				+ "}";

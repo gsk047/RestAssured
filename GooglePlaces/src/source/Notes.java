@@ -10,7 +10,7 @@ import files.Payload;
 
 public class Notes {
 
-	public static String placeID;
+//	public static String placeID;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -36,7 +36,7 @@ public class Notes {
 				.header("Server", "Apache/2.4.52 (Ubuntu)").extract().response().asPrettyString();
 
 		JsonPath jsonPathAdd = new JsonPath(addPlaceResponse);
-		placeID = jsonPathAdd.getString("place_id");
+		String placeID = jsonPathAdd.getString("place_id");
 
 		System.out.println("Add Place Response: ");
 		System.out.println(addPlaceResponse);
@@ -44,14 +44,14 @@ public class Notes {
 
 		// Update Place with new Address
 		String updatePlaceResponse = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
-				.header("Content-Type", "application/json").body(Payload.UpdatePlace()).when()
+				.header("Content-Type", "application/json").body(Payload.UpdatePlace(placeID)).when()
 				.put("maps/api/place/update/json").then().assertThat().statusCode(200).extract().response()
 				.asPrettyString();
 
 		System.out.println("Update Place Response");
 		System.out.println(updatePlaceResponse);
-		
-		JsonPath jsonPathUpdate = new JsonPath(Payload.UpdatePlace());
+
+		JsonPath jsonPathUpdate = new JsonPath(Payload.UpdatePlace(placeID));
 		String updatedAddress = jsonPathUpdate.getString("address");
 		System.out.println("Updated Address:" + updatedAddress);
 

@@ -2,10 +2,8 @@ package files;
 
 //import source.Notes;
 
-
-
 public class Payload {
-	
+
 	public static String AddPlace() {
 		return "{\r\n" + "    \"location\": {\r\n" + "        \"lat\": -38.383494,\r\n"
 				+ "        \"lng\": 33.427362\r\n" + "    },\r\n" + "    \"accuracy\": 50,\r\n"
@@ -14,13 +12,21 @@ public class Payload {
 				+ "        \"shoe park\",\r\n" + "        \"shop\"\r\n" + "    ],\r\n"
 				+ "    \"website\": \"http://google.com\",\r\n" + "    \"language\": \"French-IN\"\r\n" + "}";
 	}
-	
+
 	public static String UpdatePlace(String placeID) {
-		return "{\r\n"
-				+ "\"place_id\":\""+placeID+"\",\r\n"
-				+ "\"address\":\"70 winter walk, USA\",\r\n"
-				+ "\"key\":\"qaclick123\"\r\n"
-				+ "}";
+		return "{\r\n" + "\"place_id\":\"" + placeID + "\",\r\n" + "\"address\":\"70 winter walk, USA\",\r\n"
+				+ "\"key\":\"qaclick123\"\r\n" + "}";
 	}
-	
+
+	public static String ComplexParseRequest() {
+		return "{\r\n" + "    \"dashboard\": {\r\n" + "        \"purchaseAmount\": 910,\r\n"
+				+ "        \"website\": \"rahulshettyacademy.com\"\r\n" + "    },\r\n" + "    \"courses\": [\r\n"
+				+ "        {\r\n" + "            \"title\": \"Selenium Python\",\r\n" + "            \"price\": 50,\r\n"
+				+ "            \"copies\": 6\r\n" + "        },\r\n" + "        {\r\n"
+				+ "            \"title\": \"Cypress\",\r\n" + "            \"price\": 40,\r\n"
+				+ "            \"copies\": 4\r\n" + "        },\r\n" + "        {\r\n"
+				+ "            \"title\": \"RPA\",\r\n" + "            \"price\": 45,\r\n"
+				+ "            \"copies\": 10\r\n" + "        }\r\n" + "    ]\r\n" + "}";
+	}
+
 }

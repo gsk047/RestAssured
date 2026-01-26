@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-26T23:35:52 IST" name="Default suite" finished-at="2026-01-26T23:35:53 IST" duration-ms="737">
+    <groups>
+    </groups>
+    <test started-at="2026-01-26T23:35:52 IST" name="Default test" finished-at="2026-01-26T23:35:53 IST" duration-ms="737">
+      <class name="source.CourseSum">
+        <test-method signature="getCourseSum()[pri:0, instance:source.CourseSum@48e4374]" started-at="2026-01-26T23:35:52 IST" name="getCourseSum" finished-at="2026-01-26T23:35:53 IST" duration-ms="709" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getCourseSum -->
+      </class> <!-- source.CourseSum -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

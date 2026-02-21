@@ -1,8 +1,14 @@
 package files;
 
+//import io.restassured.matcher.ResponseAwareMatcher;
+//import io.restassured.response.Response;
+
 //import source.Notes;
 
+
 public class Payload {
+	
+	public static String updatedAddress = "70 winter walk, USA";
 
 	public static String AddPlace() {
 		return "{\r\n" + "    \"location\": {\r\n" + "        \"lat\": -38.383494,\r\n"
@@ -14,7 +20,8 @@ public class Payload {
 	}
 
 	public static String UpdatePlace(String placeID) {
-		return "{\r\n" + "\"place_id\":\"" + placeID + "\",\r\n" + "\"address\":\"70 winter walk, USA\",\r\n"
+//		String updatedAddress = "70 winter walk, USA";
+		return "{\r\n" + "\"place_id\":\"" + placeID + "\",\r\n" + "\"address\":\""+ updatedAddress +"\",\r\n"
 				+ "\"key\":\"qaclick123\"\r\n" + "}";
 	}
 

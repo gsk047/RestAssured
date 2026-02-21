@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-26T23:35:52 IST" name="Default suite" finished-at="2026-01-26T23:35:53 IST" duration-ms="737">
+  <suite started-at="2026-02-20T06:11:18 IST" name="Default suite" finished-at="2026-02-20T06:11:18 IST" duration-ms="888">
     <groups>
     </groups>
-    <test started-at="2026-01-26T23:35:52 IST" name="Default test" finished-at="2026-01-26T23:35:53 IST" duration-ms="737">
+    <test started-at="2026-02-20T06:11:18 IST" name="Default test" finished-at="2026-02-20T06:11:18 IST" duration-ms="888">
       <class name="source.CourseSum">
-        <test-method signature="getCourseSum()[pri:0, instance:source.CourseSum@48e4374]" started-at="2026-01-26T23:35:52 IST" name="getCourseSum" finished-at="2026-01-26T23:35:53 IST" duration-ms="709" status="PASS">
+        <test-method signature="getCourseSum()[pri:0, instance:source.CourseSum@35047d03]" started-at="2026-02-20T06:11:18 IST" name="getCourseSum" finished-at="2026-02-20T06:11:18 IST" duration-ms="859" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getCourseSum -->

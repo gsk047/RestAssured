@@ -4,6 +4,9 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
+
+import org.testng.Assert;
+
 import files.Payload;
 
 //import io.restassured.RestAssured;
@@ -31,37 +34,36 @@ public class Notes {
 		// Add Place
 		String addPlaceResponse = given().log().all().queryParam("key", "qaclick123")
 				.header("Content-Type", "application/json").body(Payload.AddPlace()).when()
-				.post("maps/api/place/add/json").then().assertThat().statusCode(200)
-				.body("scope", containsString("APP")).body("status", equalTo("OK"))
+				.post("maps/api/place/add/json").then().assertThat().statusCode(200).body("scope", equalTo("APP"))
 				.header("Server", "Apache/2.4.52 (Ubuntu)").extract().response().asPrettyString();
 
-		JsonPath jsonPathAdd = new JsonPath(addPlaceResponse);
-		String placeID = jsonPathAdd.getString("place_id");
+		System.out.println("Response Body: " + addPlaceResponse);
 
-		System.out.println("Add Place Response: ");
-		System.out.println(addPlaceResponse);
-		System.out.println("Place ID value is: " + placeID);
+		JsonPath jsonPath1 = ReusableMethods.jsonPath(addPlaceResponse); // To parse the JSON to String
 
-		// Update Place with new Address
-		String updatePlaceResponse = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
-				.header("Content-Type", "application/json").body(Payload.UpdatePlace(placeID)).when()
-				.put("maps/api/place/update/json").then().assertThat().statusCode(200).extract().response()
-				.asPrettyString();
+		String place_id = jsonPath1.getString("place_id");
+		System.out.println("Place ID: " + place_id);
 
-		System.out.println("Update Place Response");
-		System.out.println(updatePlaceResponse);
+		// Update Place
+		given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
+				.body(Payload.UpdatePlace(place_id)).when().put("maps/api/place/update/json").then().assertThat()
+				.statusCode(200).body("msg", equalTo("Address successfully updated"));
 
-		JsonPath jsonPathUpdate = new JsonPath(Payload.UpdatePlace(placeID));
-		String updatedAddress = jsonPathUpdate.getString("address");
-		System.out.println("Updated Address:" + updatedAddress);
+		// Get Place
+		String updatedAddress = Payload.updatedAddress;
+		
+		String getPlaceResponse = given().log().all().queryParam("place_id", place_id).queryParam("key", "qaclick123")
+				.when().get("maps/api/place/get/json").then().assertThat().statusCode(200).body("address", equalTo(updatedAddress))
+				.extract().body().asPrettyString();
 
-		// Get the Place details
-		String getPlaceResponse = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
-				.when().get("maps/api/place/get/json").then().assertThat().statusCode(200)
-				.body("address", equalTo(updatedAddress)).extract().response().asPrettyString();
-
-		System.out.println("Get Place Response:");
-		System.out.println(getPlaceResponse);
+		System.out.println("Get Place:" + getPlaceResponse);
+		
+		JsonPath jsonPath2 = ReusableMethods.jsonPath(getPlaceResponse);
+		String actualAddress = jsonPath2.getString("address");
+		
+		System.out.println("Actual Address: " + actualAddress);
+		
+		Assert.assertEquals(actualAddress, updatedAddress);
 	}
 
 }

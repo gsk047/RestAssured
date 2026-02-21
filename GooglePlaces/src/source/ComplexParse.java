@@ -43,9 +43,9 @@ public class ComplexParse {
 		// 4. Print All course titles and their respective Prices
 		for (int i = 0; i < courseCount; i++) {
 			String courseTitle = jsonPath.get("courses[" + i + "].title");
-			System.out.println(courseTitle);
+//			System.out.println(courseTitle);
 			int respectivePrices = jsonPath.getInt("courses[" + i + "].price");
-			System.out.println(respectivePrices);
+			System.out.println(courseTitle + ": " + respectivePrices);
 		}
 
 		// 5. Print no of copies if sold by RPA Course
